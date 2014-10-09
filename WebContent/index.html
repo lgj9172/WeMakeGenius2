@@ -117,11 +117,11 @@
 				</li>
 				<li style="background-image: url(assets/img/game/game3.png)"
 					gameId="g3">
-					<button type="button" id="count_number" class="btn btn-info start">Start</button>
+					<button type="button" id="choose_color" class="btn btn-info start">Start</button>
 				</li>
 				<li style="background-image: url(assets/img/game/game4.png)"
 					gameId="g4">
-					<button type="button" id="count_number" class="btn btn-info start">Start</button>
+					<button type="button" id="choose_alone_picture" class="btn btn-info start">Start</button>
 				</li>
 			</ul>
 		</div>
@@ -287,6 +287,36 @@
 							<tbody></tbody>
 						</table>
 					</div>
+					
+					<div class="col-xs-6 centered game3">
+						<h2>색깔 순서 맞추기</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>아이디</th>
+									<th>획득점수</th>
+									<th>획득날짜</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+					
+					<div class="col-xs-6 centered game4">
+						<h2>짝 없는 그림 찾기</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>아이디</th>
+									<th>획득점수</th>
+									<th>획득날짜</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 
@@ -306,6 +336,24 @@
 
 					<div class="col-xs-6 centered game2">
 						<h2>아이템카운트</h2>
+						<ul>
+							<li class="play-cnt">플레이 횟수 : <span id="item-play-cnt"></span></li>
+							<li class="max-combo">최대 콤보 : <span id="item-max-combo"></span></li>
+							<li class="max-score">최대 점수 : <span id="item-max-score"></span></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-6 centered game3">
+						<h2>색깔 순서 맞추기</h2>
+						<ul>
+							<li class="play-cnt">플레이 횟수 : <span id="item-play-cnt"></span></li>
+							<li class="max-combo">최대 콤보 : <span id="item-max-combo"></span></li>
+							<li class="max-score">최대 점수 : <span id="item-max-score"></span></li>
+						</ul>
+					</div>
+					
+					<div class="col-xs-6 centered game4">
+						<h2>짝 없는 그림 찾기</h2>
 						<ul>
 							<li class="play-cnt">플레이 횟수 : <span id="item-play-cnt"></span></li>
 							<li class="max-combo">최대 콤보 : <span id="item-max-combo"></span></li>

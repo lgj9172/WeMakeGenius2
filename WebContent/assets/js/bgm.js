@@ -30,6 +30,32 @@ $(function bgm() {
 			main_audio = $('#main_audio').attr("loop",true)[0];       
 		});
 	});
+	//색깔 순서 맞추기
+	$('#choose_color').click(function(){
+		$(".main_audio").trigger('pause');
+		
+		//main_audio.prop("currentTime",main_audio.prop("currentTime")+5);
+		main_audio = $('#main_audio').attr("src",ready_go)[0];
+		main_audio = $('#main_audio').attr("loop",false)[0];
+		
+		$("#main_audio").bind("ended", function(){
+			main_audio = $('#main_audio').attr("src",game)[0];
+			main_audio = $('#main_audio').attr("loop",true)[0];       
+		});
+	});
+	//짝 없는 그림 찾기
+	$('#choose_alone_picture').click(function(){
+		$(".main_audio").trigger('pause');
+		
+		//main_audio.prop("currentTime",main_audio.prop("currentTime")+5);
+		main_audio = $('#main_audio').attr("src",ready_go)[0];
+		main_audio = $('#main_audio').attr("loop",false)[0];
+		
+		$("#main_audio").bind("ended", function(){
+			main_audio = $('#main_audio').attr("src",game)[0];
+			main_audio = $('#main_audio').attr("loop",true)[0];       
+		});
+	});
 	
 	//통계화면으로 돌아갈때
 });
