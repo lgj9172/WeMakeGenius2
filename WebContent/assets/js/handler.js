@@ -131,9 +131,8 @@ $(function UserHandler() {
 	
 	//로그인시 엔터키로 로그인할 수 있게끔 핸들링
 	$('#input-login-id').keypress(function(e) {
-	    if (e.which == '13') {
+	    if (e.keyCode == '13') {
 	    	$('#login').trigger('click');
-	        
 	    }
 	});
 	
