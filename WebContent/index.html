@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>WeMakeGenius - 두뇌를 향상시키세요!</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="assets/css/common.css" rel="stylesheet">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="assets/css/main.css" rel="stylesheet">
+<link href="assets/css/play.css" rel="stylesheet">
+<link href="assets/css/stats.css" rel="stylesheet">
+<link href="assets/css/game.css" rel="stylesheet">
+<style>
+.container {
+	width: 970px;
+}
+</style>
+</head>
+
+<body>
+<input type="button" onclick="test_alert();" value="2초후 알림" style="position: absolute; up:100px;">
+	<!-- Main Audio -->
+	<audio id="main_audio" class="main_audio" autoplay loop="true" src="assets/sound/BT_main.mp3">
+	</audio>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span>
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><i class="fa fa-bolt"> We
+						Make Genius</i></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#home" id="home_menu" ref="home"
+						class="page-locater">홈</a></li>
+					<li><a href="#play" id="game_play_menu" ref="play"
+						class="page-locater">게임 플레이</a></li>
+					<li><a href="#stats" ref="stats" class="page-locater" id="stats-menu">통계</a></li>
+					<li><a href="#join" data-toggle="modal"
+						data-target=".join-modal">회원가입</a></li>
+					<li><a href="#login" data-toggle="modal"
+						data-target=".login-modal">로그인</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div id="rank-scroll" class="marquee">
+		<ul></ul>
+	</div>
+
+	<div class="page" id="page_home">
+
+		<div id="hello">
+			<!-- <video id="main-mv" src="assets/video/dock.mp4" width="1903px"  height="582px" autoplay loop></video> -->
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2 centered">
+						<button type="button" id="game_play_home"
+							class="btn btn-warning start-game">
+							<h1 role="button">Game Play</h1>
+							<h2>이곳을 클릭하세요</h2>
+						</button>
+					</div>
+					<!-- /col-xs-8 -->
+				</div>
+				<!-- /row -->
+
+
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /hello -->
+		<div id="green" class="bottom-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-5 centered">
+						<img src="assets/img/06.jpg" alt="" id="home-guide-img">
+					</div>
+
+					<div class="col-xs-7 centered">
+						<h3>We Make Genius 란?</h3>
+						<p>근력 운동을 하면 근육이 커지듯, 두뇌 운동을 통해 머리를 키워 나간다! 인지능력과 기억능력을 향상 시킬
+							수 있는 좋은 방법!</p>
+						<div>프로젝트 팀원 : 전태경, 정홍은, 이근재</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page" id="page_play">
+		<div id="game_list_ctr">
+			<ul>
+				<li style="background-image: url(assets/img/game/game1.png)"
+					gameId="g1">
+					<button type="button" id="number_compare" class="btn btn-info start">Start</button>
+				</li>
+				<li style="background-image: url(assets/img/game/game2.png)"
+					gameId="g2">
+					<button type="button" id="count_number" class="btn btn-info start">Start</button>
+				</li>
+				<li style="background-image: url(assets/img/game/game3.png)"
+					gameId="g3">
+					<button type="button" id="count_number" class="btn btn-info start">Start</button>
+				</li>
+				<li style="background-image: url(assets/img/game/game4.png)"
+					gameId="g4">
+					<button type="button" id="count_number" class="btn btn-info start">Start</button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="game_info_ctr" class="bottom-container"
+			style="background-image: url(http://localhost:8080/w/assets/img/intention/g1.gif); background-color: rgb(148, 210, 84);">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-11 centered"></div>
+
+					<!-- <div class="col-xs-7 centered">
+						<div class="l"></div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-11 centered"></div>
+
+				<!-- <div class="col-xs-7 centered">
+						<div class="l"></div>
+					</div> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- 실제 게임 페이지 -->
+	<div class="page" id="page_games">
+		<h2 id="game_title"></h2>
+		<div class="game-info-header">
+			<div id="timeline">
+				<div id="timeline-progress"></div>
+			</div>
+			<div id="timer">10</div>
+			<div id="score">100 Point</div>
+		</div>
+
+		<div id="start_message"></div>
+		<div id="finish_message">
+			<img src='assets/img/game/img_gameover.png'></img>
+			<h2 class="point">24124</h2>
+			<h2 class="combo">12</h2>
+			<div class="home"><span class="glyphicon glyphicon-home"></span>홈으로</div>
+		</div>
+			
+		</div>
+		<!--cn : Comparing Number-->
+		<div class="play-ground" id="game_g1">
+			<div class="question">
+				<div class="left-num">54</div>
+				<div class="right-num">51</div>
+				<div class="blank">?</div>
+			</div>
+			<div class="option">
+				<div class="opt1" largeT="left">></div>
+				<div class="opt2" largeT="equal">=</div>
+				<div class="opt3" largeT="right"><</div>
+			</div>
+		</div>
+		<!--cn : Count Number-->
+		<div class="play-ground" id="game_g2">
+			<div>
+				<div class="picture"></div>
+				<div class="option">
+					<div class="num1">4</div>
+					<div class="num2">3</div>
+					<div class="num3">2</div>
+					<div class="num4">1</div>
+				</div>
+			</div>
+			<!--
+			<div class="question">
+				<div class="left-num">54</div>
+				<div class="right-num">51</div>
+				<div class="blank">?</div>
+			</div>
+			<div class="option">
+				<div class="opt1" largeT="left">></div>
+				<div class="opt2" largeT="equal">=</div>
+				<div class="opt3" largeT="right"><</div>
+			</div>
+			-->
+		</div>
+		<!--cn : 색깔 순서 맞추기-->
+		<div class="play-ground" id="game_g3">
+			<div class="color_area">
+				<div class="color_1">54</div>
+				<div class="color_2">54</div>
+				<div class="color_3">54</div>
+				<div class="color_4">54</div>
+				<div class="color_5">54</div>
+			</div>
+			<div class="option_area">
+				<div class="color_option_1"></div>
+				<div class="color_option_2"></div>
+				<div class="color_option_3"></div>
+				<div class="color_option_4"></div>
+				<div class="color_option_5"></div>
+				<div class="color_option_6"></div>
+				<div class="color_option_7"></div>
+				<div class="color_option_8"></div>
+			</div>
+		</div>
+		<!--cn : 짝없는 그림찾기-->
+		<div class="play-ground" id="game_g4">
+			<div class="color_area">
+				<div class="color_1">54</div>
+				<div class="color_2">54</div>
+				<div class="color_3">54</div>
+				<div class="color_4">54</div>
+				<div class="color_5">54</div>
+			</div>
+			<div class="option_area">
+				<div class="color_option_1"></div>
+				<div class="color_option_2"></div>
+				<div class="color_option_3"></div>
+				<div class="color_option_4"></div>
+				<div class="color_option_5"></div>
+				<div class="color_option_6"></div>
+				<div class="color_option_7"></div>
+				<div class="color_option_8"></div>
+			</div>
+		</div>
+
+		<div id="result_message"></div>
+	</div>
+
+
+	<div class="page" id="page_stats">
+		<div class="stats-ctn">
+			<h1>Top5 순위</h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6 centered game1">
+						<h2>숫자비교게임</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>아이디</th>
+									<th>획득점수</th>
+									<th>획득날짜</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+
+					<div class="col-xs-6 centered game2">
+						<h2>아이템카운트</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>아이디</th>
+									<th>획득점수</th>
+									<th>획득날짜</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="stats-info bottom-container">
+			<h1>나의 통계</h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6 centered game1">
+						<h2>숫자비교게임</h2>
+						<ul>
+							<li class="play-cnt">플레이 횟수 : <span id="compare-play-cnt"></span></li>
+							<li class="max-combo">최대 콤보 : <span id="compare-max-combo"></span></li>
+							<li class="max-score">최대 점수 : <span id="compare-max-score"></span></li>
+						</ul>
+					</div>
+
+					<div class="col-xs-6 centered game2">
+						<h2>아이템카운트</h2>
+						<ul>
+							<li class="play-cnt">플레이 횟수 : <span id="item-play-cnt"></span></li>
+							<li class="max-combo">최대 콤보 : <span id="item-max-combo"></span></li>
+							<li class="max-score">최대 점수 : <span id="item-max-score"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/js/ext/jquery-1.9.0.js"></script>
+	<script src="assets/js/ext/jquery.scrollbox.js"></script>
+	<script src="assets/js/ext/bootstrap.js"></script>
+	<script src="assets/js/ext/jquery.li-scroller.1.0.js"></script>
+	<script src="assets/js/ext/underscore.js"></script>
+
+
+	<!-- 커스텀 페이지 모듈-->
+	<script src="assets/js/static.js"></script>
+	<script src="assets/js/picture.js"></script>
+	<script src="assets/js/handler.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/play.js"></script>
+	<script src="assets/js/header.js"></script>
+	<script src="assets/js/bgm.js"></script>
+	<script src="assets/js/game.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/stats.js"></script>
+	
+	
+	<script type="text/javascript">
+	</script>
+
+
+	<!-- 회원가입, 등록 모달-->
+	<div class="modal fade login-modal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">로그인</h4>
+				</div>
+				<div class="modal-body">
+
+					<form role="form">
+						<div class="form-group">
+							<label>학번</label> <input type="id" class="form-control"
+								id="input-login-id" placeholder="학번을 입력하세요">
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" id="login">로그인</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class="modal fade join-modal" id="register">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">회원가입</h4>
+				</div>
+				<div class="modal-body">
+
+					<form role="form">
+						<div class="form-group">
+							<label>학번</label> <input type="id" class="form-control"
+								id="input-register-id" placeholder="학번을 입력하세요">
+						</div>
+						<div class="form-group">
+							<label>이름</label> <input type="name" class="form-control"
+								id="input-register-name" placeholder="이름을 입력하세요">
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" id="join">등록</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+
+
+	<!-- 로그아웃 확인 모달-->
+	<div class="modal fade logout-modal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">로그아웃</h4>
+				</div>
+				<div class="modal-body">현재 접속된 계정을 로그아웃 하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" id="logout-btn">확인</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	
+</body>
+</html>

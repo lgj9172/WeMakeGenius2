@@ -1,0 +1,58 @@
+#page_play {
+
+}
+
+#game_list_ctr{
+ 
+    
+}
+
+#game_list_ctr > ul{
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    width: 1920px;
+}
+
+#game_list_ctr > ul > li{
+    float: left;
+    width: 360px;
+    height: 298px;
+    position: relative;
+    background-size: cover;
+    margin: 20px;
+    list-style: none;
+    background-color: #fff;
+    border: solid 1px;
+    text-align: center;
+    line-height: 298px;
+}
+
+#game_list_ctr > ul > li .start{
+    font-size: 35px;
+    display: none;
+    width: 50%;  height: 25%;
+    padding: 0;
+}
+
+#game_list_ctr > ul > li:nth-child(3){
+    font-size: 40px;
+    
+}
+
+#game_info_ctr{ 
+    background: none;
+    background-position : center center;
+    background-repeat: no-repeat;
+    
+    background-size: contain;
+}
+
+#game_info_ctr .game-pic{
+    display: inline-block;
+    width: 300px;
+    height: 210px;
+    background-size: cover;
+}
+
+

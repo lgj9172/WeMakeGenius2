@@ -1,0 +1,45 @@
+#page_stats {
+
+}
+
+#page_stats .stats-ctn{
+    top: 17%;
+ 
+    
+    position: relative;
+    padding: 27px;
+}
+
+#page_stats .stats-ctn > .container{
+    position: relative;
+
+}
+
+#page_stats .stats-info{
+    background-color: #9fc3e5;
+    padding: 0px 27px;
+}
+
+#page_stats h1{
+    display: inline-block;
+    position: absolute;
+    font-size: 28px;
+}
+
+.stats-info ul {
+
+}
+
+.stats-info ul li{
+    text-align: left;
+    
+}
+
+.stats-ctn h2{
+    font-size: 20px;
+	
+}
+
+.stats-info h2{
+	font-size: 20px;
+}
