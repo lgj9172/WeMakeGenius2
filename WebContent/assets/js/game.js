@@ -138,12 +138,12 @@ var game = function(){
 			elem.gameHeader.hide();
 			elem.progess.stop().width(0);
 			elem.timer.text(10);
-
+			$(".game-info-header").hide();
+			$(".play-ground").hide();
+			$(".main_audio").trigger('pause');	
 			$.each(setTimerArray, function(idx, item){
 				item.clearTimeout();
 			});
-
-			$(".main_audio").trigger('pause');
 		},
 		getScore : function(){
 			return point;
@@ -438,13 +438,12 @@ var game3 = function(){
 		color_option_8 : 	_this.find('.color_option_8'),
 		title : 	$('#game_title'),
 		
-		picture : 	_this.find('.picture'),
-		option : 	_this.find('.option'),
-		num1 :  	_this.find('.num1'),
-		num2 :  	_this.find('.num2'),
-		num3 :  	_this.find('.num3'),
-		num4 :  	_this.find('.num4')
-		
+		//picture : 	_this.find('.picture'),
+		//option : 	_this.find('.option'),
+		//num1 :  	_this.find('.num1'),
+		//num2 :  	_this.find('.num2'),
+		//num3 :  	_this.find('.num3'),
+		//num4 :  	_this.find('.num4')
 	};
 
 	var level = 1;
@@ -458,14 +457,14 @@ var game3 = function(){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_o.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(true);
-			game2.playSet();
+			game3.playSet();
 
 		}
 		else if(!bool){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_x.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(false);
-			game2.playSet();
+			game3.playSet();
 		}
 	};
 
@@ -474,55 +473,6 @@ var game3 = function(){
 	 * 입력 : 정수
 	 * 출력 : JSON 배열
 	 */
-	var getRanPicMeta = function(input_level){
-		var random_number;
-		switch(input_level)
-		{
-			case 1:
-				console.log("레벨1 문제를 랜덤으로 가져옵니다.");
-				random_number = Math.floor(Math.random() * picture.level_1.length);
-				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
-				console.log(picture.level_1[random_number]);
-				return picture.level_1[random_number];
-				break;
-			
-			case 2:
-				console.log("레벨2 문제를 랜덤으로 가져옵니다.");
-				random_number = Math.floor(Math.random() * picture.level_2.length);
-				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
-				console.log(picture.level_2[random_number]);
-				return picture.level_2[random_number];
-				break;
-				
-			case 3:
-				console.log("레벨3 문제를 랜덤으로 가져옵니다.");
-				random_number = Math.floor(Math.random() * picture.level_3.length);
-				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
-				console.log(picture.level_3[random_number]);
-				return picture.level_3[random_number];
-				break;
-				
-			case 4:
-				console.log("레벨4 문제를 랜덤으로 가져옵니다.");
-				random_number = Math.floor(Math.random() * picture.level_4.length);
-				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
-				console.log(picture.level_4[random_number]);
-				return picture.level_4[random_number];
-				break;
-				
-			case 5:
-				console.log("레벨5 문제를 랜덤으로 가져옵니다.");
-				random_number = Math.floor(Math.random() * picture.level_5.length);
-				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
-				console.log(picture.level_5[random_number]);
-				return picture.level_5[random_number];
-				break;
-				
-			default :
-				console.log("예외 : random_picture 함수에는 1~5만 입력가능합니다.");
-				return -1;
-		}
-	}
 
 	var getExample = function(nCorrectAnswer) {
 		var nStart = Math.max(nCorrectAnswer-2 , 0);

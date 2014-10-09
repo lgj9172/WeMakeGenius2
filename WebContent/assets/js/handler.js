@@ -45,6 +45,7 @@ $(function HomeHandler() {
 	$('#hello button').click(function(){
 		if(window.sessionStorage.length != 0){
 			$('.page-locater[ref="play"]').trigger('click');
+			game.clearGame();
 		}
 		else{
 			alert('로그인을 먼저 해야 합니다.');	
@@ -138,6 +139,7 @@ $(function UserHandler() {
 	
 	$('#logout-btn').click(function(){
 		outSession();
+		game.clearGame();
 	});
 	
 	
