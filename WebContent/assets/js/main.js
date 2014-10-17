@@ -2,14 +2,15 @@
 $(function () {
 
 	//GNB 하단 Marquee에 들어갈 계정 스코어 정보
-	$.ajax({
+	/* $.ajax({
 		url		:	"jsp/getscore.jsp?type=marquee",
 		type	:	"GET",	
 		datatype:	"json",
 		
 		success	: function(result){
+			console.log(result);
 			var res = JSON.parse(result);
-			
+			console.log(res);
 			$.each(res, function(idx, item){
 				var itemElem = 
 					'<li>'+
@@ -25,7 +26,7 @@ $(function () {
 			//순위 정보 Marquee
 			$("#rank-scroll > ul").liScroll({travelocity: 0.13});
 		}
-	});
+	});*/
 
 	
 	
