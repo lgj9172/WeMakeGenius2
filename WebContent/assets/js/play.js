@@ -35,7 +35,13 @@ $(function () {
             }
             if(curGameId == 'g2'){
                 game2.init();
-            }       
+            }  
+            if(curGameId == 'g3'){
+                game3.init();
+            } 
+            if(curGameId == 'g4'){
+                game4.init();
+            } 
         });
     });
 });
