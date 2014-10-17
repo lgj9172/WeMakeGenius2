@@ -267,3 +267,119 @@
     margin-top: -43px;   
     background: url(../img/game/light_red.png);
 }
+
+/* 색깔 순서 맞추기 게임 스타일 */
+#game_g3{
+	
+}
+
+#game_g3 .color_area{
+	position : absolute;
+	top : 30%;
+	left: 50%;
+	width: 580px;
+	height: 100px;
+	margin-left: -290px;
+	border: 1px solid gray;
+	
+}
+
+#game_g3 .box{
+	width: 100px;
+	height: 100px;
+	border: 1px solid gray;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#game_g3 .color_1{
+	position : absolute;
+	left: 0px;
+}
+
+#game_g3 .color_2{
+	position : absolute;
+	left: 120px;
+}
+
+#game_g3 .color_3{
+	position : absolute;
+	left: 240px;
+}
+
+#game_g3 .color_4{
+	position : absolute;
+	left: 360px;
+}
+
+#game_g3 .color_5{
+	position : absolute;
+	left: 480px;
+}
+
+#game_g3 .option_area{
+	position : absolute;
+	bottom: 100px;
+	left: 50%;
+	width: 700px;
+	height: 250px;
+	margin-left: -350px;
+	border: 1px solid gray;
+	
+}
+
+#game_g3 .color_option_1{
+	position : absolute;
+	left: 0px;
+	top: 0px;
+	background-color: #ff0000;
+}
+
+#game_g3 .color_option_2{
+	position : absolute;
+	left: 200px;
+	top: 0px;
+	background-color: #ffc000;
+}
+
+#game_g3 .color_option_3{
+	position : absolute;
+	left: 400px;
+	top: 0px;
+	background-color: #92d050;
+}
+
+#game_g3 .color_option_4{
+	position : absolute;
+	left: 600px;
+	top: 0px;
+	background-color: #00b0f0;
+}
+#game_g3 .color_option_5{
+	position : absolute;
+	left: 0px;
+	top: 150px;
+	background-color: #0070c0;
+}
+
+#game_g3 .color_option_6{
+	position : absolute;
+	left: 200px;
+	top: 150px;
+	background-color: #002060;
+}
+#game_g3 .color_option_7{
+	position : absolute;
+	left: 400px;
+	top: 150px;
+	background-color: #7030a0;
+}
+
+#game_g3 .color_option_8{
+	position : absolute;
+	left: 600px;
+	top: 150px;
+	background-color: #000000;
+}
+
