@@ -3,6 +3,7 @@ $(function bgm() {
 	var ready_go = "assets/sound/ready.mp3";
 	var game	 = "assets/sound/BT_play.mp3";
 	var game_home= "assets/sound/game.mp3";
+	var stats    = "assets/sound/result.mp3";
 	audio_event = document.getElementById("main_audio");
 	
 	$('#game_play_home').click(function(){
@@ -15,6 +16,9 @@ $(function bgm() {
 			main_audio = $('#main_audio').attr("src", game_home)[0];
 			main_audio = $('#main_audio').attr("loop",true)[0];
 		}
+	});
+	$('#game_play_menu').click(function(){
+		alert('click');
 	});
 	//게임 실행시 나오는 ready~go~!통제
 	//숫자비교게임
@@ -71,4 +75,15 @@ $(function bgm() {
 	});
 	
 	//통계화면으로 돌아갈때
+	$('#stats_menu').click(function(){
+		if(window.sessionStorage.length == 0){
+			return false;
+		}
+		else{
+			$(".main_audio").trigger('pause');
+			
+			main_audio = $('#main_audio').attr("src", stats)[0];
+			main_audio = $('#main_audio').attr("loop",true)[0];
+		}
+	});
 });
