@@ -414,3 +414,276 @@ var game2 = function(){
 		}
 	};
 }();
+
+//사진숫자세기 게임 인스턴스
+var game3 = function(){
+
+	var _this = $('#game_g3');
+
+	var elem = {
+		color_area : _this.find('.color_area'),
+		color_1 : 	_this.find('.color_1'),
+		color_2 : 	_this.find('.color_2'),
+		color_3 : 	_this.find('.color_3'),
+		color_4 : 	_this.find('.color_4'),
+		color_5 : 	_this.find('.color_5'),
+		option_area : _this.find('option_area'),
+		color_option_1 : 	_this.find('.color_option_1'),
+		color_option_2 : 	_this.find('.color_option_2'),
+		color_option_3 : 	_this.find('.color_option_3'),
+		color_option_4 : 	_this.find('.color_option_4'),
+		color_option_5 : 	_this.find('.color_option_5'),
+		color_option_6 : 	_this.find('.color_option_6'),
+		color_option_7 : 	_this.find('.color_option_7'),
+		color_option_8 : 	_this.find('.color_option_8'),
+		title : 	$('#game_title'),
+		
+		//picture : 	_this.find('.picture'),
+		//option : 	_this.find('.option'),
+		//num1 :  	_this.find('.num1'),
+		//num2 :  	_this.find('.num2'),
+		//num3 :  	_this.find('.num3'),
+		//num4 :  	_this.find('.num4')
+	};
+
+	var level = 1;
+	var currentPicMeta = {};
+	var example = {}
+
+
+	//제출함수 로 부터 UI 처리
+	var	processSumbit = function(bool){
+		if(bool){
+			$("#result_message").html("<img src='assets/img/game/img_feedback_o.png'></img>").show();
+			$("#result_message").fadeOut(500);
+			game.solve(true);
+			game3.playSet();
+
+		}
+		else if(!bool){
+			$("#result_message").html("<img src='assets/img/game/img_feedback_x.png'></img>").show();
+			$("#result_message").fadeOut(500);
+			game.solve(false);
+			game3.playSet();
+		}
+	};
+
+		/*이 함수에 레벨을 정수로 입력하면 해당 레벨의 문제가 랜덤으로 반환됩니다.
+	 * 콘솔 창에 반환된 JSON과 레벨이 표시됩니다.
+	 * 입력 : 정수
+	 * 출력 : JSON 배열
+	 */
+
+	var getExample = function(nCorrectAnswer) {
+		var nStart = Math.max(nCorrectAnswer-2 , 0);
+		var aPool = _.range(nStart, nCorrectAnswer+2);
+		aPool = aPool.remove(nCorrectAnswer);
+
+		var aExamples = _.flatten([_.sample(aPool, 4), nCorrectAnswer]);
+		
+		return _.shuffle(aExamples);
+	};
+
+	var upgradeLevel = function(){
+		if(game.getScore() == 4000){
+			level = 1;
+		}else if(game.getScore() == 7000){
+			level = 2;
+		}else if(game.getScore() == 12000){
+			level = 3;
+		}else if(game.getScore() == 16000){
+			level = 4;
+		}
+	};
+
+	//정답 제출 핸들러
+	elem.option.find('> div').click(function(){
+		var submitVal = $(this).text();
+		game3.submit(submitVal);
+	});
+	
+	return{
+		init : function(){
+			_this.show();
+			elem.title.text('색깔 순서 맞추기');
+			game3.playSet();
+			game.setType(3);
+		},
+		playSet : function(){
+			elem.picture.hide();
+			elem.option.find('> div').hide();
+
+			upgradeLevel();
+
+			currentPicMeta = getRanPicMeta(level);
+			var exampleArray = getExample(currentPicMeta.ANSWER);
+
+			$.each(exampleArray, function(idx, item){
+				elem.option.find('> div').eq(idx).text(item).fadeIn(200);
+			})
+
+			elem.picture.css('background-image', 'url(assets/game/'+level+'/'+currentPicMeta.URL+')');
+			elem.picture.fadeIn(350);
+		},
+		submit : function(submitVal){
+			if(submitVal == currentPicMeta.ANSWER){
+				processSumbit(true);
+			}else{
+				processSumbit(false);
+			}
+		}
+	};
+}();
+
+//게임4 인스턴스
+var game4 = function(){
+
+	var _this = $('#game_g4');
+
+	var elem = {
+		picture : 	_this.find('.picture'),
+		option : 	_this.find('.option'),
+		num1 :  	_this.find('.num1'),
+		num2 :  	_this.find('.num2'),
+		num3 :  	_this.find('.num3'),
+		num4 :  	_this.find('.num4'),
+		title : 	$('#game_title')
+	};
+
+	var level = 1;
+	var currentPicMeta = {};
+	var example = {}
+
+
+	//제출함수 로 부터 UI 처리
+	var	processSumbit = function(bool){
+		if(bool){
+			$("#result_message").html("<img src='assets/img/game/img_feedback_o.png'></img>").show();
+			$("#result_message").fadeOut(500);
+			game.solve(true);
+			game2.playSet();
+
+		}
+		else if(!bool){
+			$("#result_message").html("<img src='assets/img/game/img_feedback_x.png'></img>").show();
+			$("#result_message").fadeOut(500);
+			game.solve(false);
+			game2.playSet();
+		}
+	};
+
+		/*이 함수에 레벨을 정수로 입력하면 해당 레벨의 문제가 랜덤으로 반환됩니다.
+	 * 콘솔 창에 반환된 JSON과 레벨이 표시됩니다.
+	 * 입력 : 정수
+	 * 출력 : JSON 배열
+	 */
+	var getRanPicMeta = function(input_level){
+		var random_number;
+		switch(input_level)
+		{
+			case 1:
+				console.log("레벨1 문제를 랜덤으로 가져옵니다.");
+				random_number = Math.floor(Math.random() * picture.level_1.length);
+				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
+				console.log(picture.level_1[random_number]);
+				return picture.level_1[random_number];
+				break;
+			
+			case 2:
+				console.log("레벨2 문제를 랜덤으로 가져옵니다.");
+				random_number = Math.floor(Math.random() * picture.level_2.length);
+				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
+				console.log(picture.level_2[random_number]);
+				return picture.level_2[random_number];
+				break;
+				
+			case 3:
+				console.log("레벨3 문제를 랜덤으로 가져옵니다.");
+				random_number = Math.floor(Math.random() * picture.level_3.length);
+				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
+				console.log(picture.level_3[random_number]);
+				return picture.level_3[random_number];
+				break;
+				
+			case 4:
+				console.log("레벨4 문제를 랜덤으로 가져옵니다.");
+				random_number = Math.floor(Math.random() * picture.level_4.length);
+				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
+				console.log(picture.level_4[random_number]);
+				return picture.level_4[random_number];
+				break;
+				
+			case 5:
+				console.log("레벨5 문제를 랜덤으로 가져옵니다.");
+				random_number = Math.floor(Math.random() * picture.level_5.length);
+				// 랜덤숫자를 만들지만 최대 숫자가 해당 레벨의 최대 배열을 못넘습니다.
+				console.log(picture.level_5[random_number]);
+				return picture.level_5[random_number];
+				break;
+				
+			default :
+				console.log("예외 : random_picture 함수에는 1~5만 입력가능합니다.");
+				return -1;
+		}
+	}
+
+	var getExample = function(nCorrectAnswer) {
+		var nStart = Math.max(nCorrectAnswer-2 , 0);
+		var aPool = _.range(nStart, nCorrectAnswer+2);
+		aPool = aPool.remove(nCorrectAnswer);
+
+		var aExamples = _.flatten([_.sample(aPool, 4), nCorrectAnswer]);
+		
+		return _.shuffle(aExamples);
+	};
+
+	var upgradeLevel = function(){
+		if(game.getScore() == 4000){
+			level = 1;
+		}else if(game.getScore() == 7000){
+			level = 2;
+		}else if(game.getScore() == 12000){
+			level = 3;
+		}else if(game.getScore() == 16000){
+			level = 4;
+		}
+	};
+
+	//정답 제출 핸들러
+	elem.option.find('> div').click(function(){
+		var submitVal = $(this).text();
+		game4.submit(submitVal);
+	});
+	
+	return{
+		init : function(){
+			_this.show();
+			elem.title.text('짝 없는 그림 찾기');
+			game4.playSet();
+			game.setType(4);
+		},
+		playSet : function(){
+			elem.picture.hide();
+			elem.option.find('> div').hide();
+
+			upgradeLevel();
+
+			currentPicMeta = getRanPicMeta(level);
+			var exampleArray = getExample(currentPicMeta.ANSWER);
+
+			$.each(exampleArray, function(idx, item){
+				elem.option.find('> div').eq(idx).text(item).fadeIn(200);
+			})
+
+			elem.picture.css('background-image', 'url(assets/game/'+level+'/'+currentPicMeta.URL+')');
+			elem.picture.fadeIn(350);
+		},
+		submit : function(submitVal){
+			if(submitVal == currentPicMeta.ANSWER){
+				processSumbit(true);
+			}else{
+				processSumbit(false);
+			}
+		}
+	};
+}();
