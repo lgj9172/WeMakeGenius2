@@ -511,6 +511,7 @@ var game3 = function(){
 	return{
 		init : function(){
 			_this.show();
+			maxLevel = 1;
 			elem.title.text('색깔 순서 맞추기');
 			game3.playSet();
 			game.setType(3);
