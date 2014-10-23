@@ -6,24 +6,10 @@ $(function bgm() {
 	var stats    = "assets/sound/result.mp3";
 	audio_event = document.getElementById("main_audio");
 	
-	$('#game_play_home').click(function(){
-		if(window.sessionStorage.length == 0){
-			return false;
-		}
-		else{
-			$(".main_audio").trigger('pause');
-			
-			main_audio = $('#main_audio').attr("src", game_home)[0];
-			main_audio = $('#main_audio').attr("loop",true)[0];
-		}
-	});
-	$('#game_play_menu').click(function(){
-		alert('click');
-	});
 	//게임 실행시 나오는 ready~go~!통제
 	//숫자비교게임
 	$('#number_compare').click(function(){
-		$(".main_audio").trigger('pause');	
+			
 		
 		//main_audio.prop("currentTime",main_audio.prop("currentTime")+5);
 		main_audio = $('#main_audio').attr("src",ready_go)[0];
