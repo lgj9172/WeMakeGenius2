@@ -427,7 +427,12 @@ var game3 = function(){
 		color_3 : 	_this.find('.color_3'),
 		color_4 : 	_this.find('.color_4'),
 		color_5 : 	_this.find('.color_5'),
-		option_area : _this.find('option_area'),
+		selected_color_1 : 	_this.find('.selected_color_1'),
+		selected_color_2 : 	_this.find('.selected_color_2'),
+		selected_color_3 : 	_this.find('.selected_color_3'),
+		selected_color_4 : 	_this.find('.selected_color_4'),
+		selected_color_5 : 	_this.find('.selected_color_5'),
+		option_area : _this.find('.option_area'),
 		color_option_1 : 	_this.find('.color_option_1'),
 		color_option_2 : 	_this.find('.color_option_2'),
 		color_option_3 : 	_this.find('.color_option_3'),
@@ -446,67 +451,60 @@ var game3 = function(){
 		//num4 :  	_this.find('.num4')
 	};
 	
-	var currentLevel = 1;
+	//var currentLevel = 1;	// 현재 레벨 입니다.
 	
-	var currentQuestion = {
-		color_1 : "#FFFFFF",
-		color_2 : "#FFFFFF",
-		color_3 : "#FFFFFF",
-		color_4 : "#FFFFFF",
-		color_5 : "#FFFFFF"
-	};
+	var maxLevel = 1;	// 최대 레벨 입니다.
 	
-	var getRandomNumberByRange = function(min, max) {
+	var currentPosition = 1; // 색을 골랐을 때 색이 들어가야할 곳의 위치입니다.
+	
+	var getRandomNumberByRange = function(min, max) {	// 범위로 랜덤 변수를 반환합니다.
 			return Math.floor( (Math.random() * (max - min + 1)) + min );
 	};
 	
-	var getRandomColor = {
-			left : 0,
-			right : 0
+	var controlLevel = function(){	// 레벨을 조정합니다!
+		if(game.getScore() <= 4000){
+			maxLevel = 1;
+		}else if(game.getScore() <= 7000){
+			maxLevel = 2;
+		}else if(game.getScore() <= 12000){
+			maxLevel = 3;
+		}else if(game.getScore() <= 16000){
+			maxLevel = 4;
+		}else if(game.getScore() <= 20000){
+			maxLevel = 5;
+		}
 	};
 	
 	
-
-	var currentQNum = {
-		left : 0,
-		right : 0
-	};
-
-	var getRanNum = function(size){
-		var length = 1;
-		while(size)
+	var setColor = function(){
+		if(currentPosition<5)
 		{
-			length = length * 10;
-			size--;
-			if(size == 0)
-			{
-				break;
-			}
-		}		
-		return Math.floor(Math.random()*length);
+			console.log("객체지향 성공.");
+		}
+			
 	};
-
+	
 	//정답 제출 핸들러
-	/*
-	elem.option.find('> div').click(function(){
-		var largeT = $(this).attr('largeT');
-		game1.submit(largeT);
-	});*/
-
+	elem.option_area.children("div").click(function(){
+		var color = $(this).css("background-color");
+		$(".selected_color_" + currentPosition).css("background-color", color);
+		game3.submit(color);	
+	});
+	
 	//제출함수 로 부터 UI 처리
 	var	processSumbit = function(bool){
 		if(bool){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_o.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(true);
-			game1.playSet();
+			game3.playSet();
 
 		}
 		else if(!bool){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_x.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(false);
-			game1.playSet();
+			game3.playSet();
 		}
 	};
 	
@@ -518,43 +516,44 @@ var game3 = function(){
 			game.setType(3);
 		},
 		playSet : function(){
-			elem.question.hide();
-
-			currentQNum.left = getRanNum(2);
-			currentQNum.right = getRanNum(2); 
-
-			elem.leftNum.text(currentQNum.left);
-			elem.rightNum.text(currentQNum.right);
-			elem.question.fadeIn(350);
-		},
-		submit : function(largeT){
-
-			switch (largeT){
-				case 'left' :
-					if(currentQNum.left > currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-				break;
-				case 'right' :
-					if(currentQNum.left < currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-
-				break;
-				case 'equal' :
-
-					if(currentQNum.left == currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-
-				break;
+			var randomColor=0;
+			for(var start = 1; start<=maxLevel; start++){
+				randomColor = getRandomNumberByRange(1, 8);
+				// 아래에 있는 보기중에서 랜덤으로 색을 가져옵니다.
+				$(".color_" + start).css("background-color", $(".color_option_" + randomColor).css("background-color"));
 			}
+		},
+		submit : function(color){
+			console.log("답을 골랐습니다..");
+			var answer =  $(".color_" + currentPosition).css("background-color");
+			if(color==answer) // 지금 찍은게 맞았으면 
+			{
+				console.log("맞았어!");
+				if(currentPosition == maxLevel) // 마지막 선택지 였을 경우
+				{
+					controlLevel();	// 레벨을 조절합니다!
+					console.log("다 맞았어!");
+					elem.color_area.children("div:gt(4)").css("background-color", "transparent"); // 선택지를 초기화하자!
+					currentPosition = 1;
+					processSumbit(true);
+				}
+				else	// 마지막 선택지가 아니었으면!
+				{
+					// 다음 선택지를 골라줍니다.
+					currentPosition = currentPosition + 1;
+				}
+			}
+			if(color!=answer) // 지금 찍은게 틀렸으면
+			{
+				controlLevel();	// 레벨을 조절합니다!
+				elem.color_area.children("div:lt(3)").css("background-color", "transparent"); // 문제지를 초기화하자!
+				elem.color_area.children("div:gt(4)").css("background-color", "transparent"); // 선택지를 초기화하자!
+				console.log("틀렸어!");
+				processSumbit(false);
+				currentPosition = 1;	// 선택지 위치를 다시 1번으로 돌리고
+			}
+			
+			console.log(currentPosition);
 		}
 	};
 }();

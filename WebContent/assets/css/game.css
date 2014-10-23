@@ -278,16 +278,15 @@
 	top : 30%;
 	left: 50%;
 	width: 580px;
-	height: 100px;
+	height: 220px;
 	margin-left: -290px;
-	border: 1px solid gray;
-	
+	/*border: 1px solid gray;*/
 }
 
 #game_g3 .box{
 	width: 100px;
 	height: 100px;
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
@@ -318,6 +317,36 @@
 	left: 480px;
 }
 
+#game_g3 .selected_color_1{
+	position : absolute;
+	left: 0px;
+	top: 120px;
+}
+
+#game_g3 .selected_color_2{
+	position : absolute;
+	left: 120px;
+	top: 120px;
+}
+
+#game_g3 .selected_color_3{
+	position : absolute;
+	left: 240px;
+	top: 120px;
+}
+
+#game_g3 .selected_color_4{
+	position : absolute;
+	left: 360px;
+	top: 120px;
+}
+
+#game_g3 .selected_color_5{
+	position : absolute;
+	left: 480px;
+	top: 120px;
+}
+
 #game_g3 .option_area{
 	position : absolute;
 	bottom: 100px;
@@ -325,7 +354,6 @@
 	width: 700px;
 	height: 250px;
 	margin-left: -350px;
-	border: 1px solid gray;
 	
 }
 
