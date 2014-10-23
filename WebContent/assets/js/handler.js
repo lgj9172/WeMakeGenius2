@@ -6,7 +6,7 @@
 $(function GnbHandler() {
 	$('.page').hide();
 	$('#page_home').show();
-
+	audio_event = document.getElementById("main_audio");
 	//GNB 핸들러
 	$('.page-locater').click(function(e){
 
@@ -18,9 +18,15 @@ $(function GnbHandler() {
 				alert('로그인을 먼저 해야 합니다.');
 				return false;
 			}
+			else{
+				main_audio = $('#main_audio').attr("src", "assets/sound/game.mp3")[0];
+				main_audio = $('#main_audio').attr("loop",true)[0];
+			}
 		}else if(targetRef=='stats'){
 			if(window.sessionStorage.length != 0){
 				stats.init();
+				main_audio = $('#main_audio').attr("src", "assets/sound/result.mp3")[0];
+				main_audio = $('#main_audio').attr("loop",true)[0];
 			}else{
 				alert('로그인을 먼저 해야 합니다.');
 				return false;
