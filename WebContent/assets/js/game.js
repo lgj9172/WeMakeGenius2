@@ -462,15 +462,15 @@ var game3 = function(){
 	};
 	
 	var controlLevel = function(){	// 레벨을 조정합니다!
-		if(game.getScore() <= 4000){
+		if(game.getScore() <= 2000){
 			maxLevel = 1;
-		}else if(game.getScore() <= 7000){
+		}else if(game.getScore() <= 5000){
 			maxLevel = 2;
-		}else if(game.getScore() <= 12000){
+		}else if(game.getScore() <= 8000){
 			maxLevel = 3;
-		}else if(game.getScore() <= 16000){
+		}else if(game.getScore() <= 12000){
 			maxLevel = 4;
-		}else if(game.getScore() <= 20000){
+		}else if(game.getScore() <= 15000){
 			maxLevel = 5;
 		}
 	};
@@ -513,6 +513,7 @@ var game3 = function(){
 			_this.show();
 			maxLevel = 1;
 			elem.title.text('색깔 순서 맞추기');
+			elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
 			game3.playSet();
 			game.setType(3);
 		},
@@ -534,7 +535,7 @@ var game3 = function(){
 				{
 					controlLevel();	// 레벨을 조절합니다!
 					console.log("다 맞았어!");
-					elem.color_area.children("div:gt(4)").css("background-color", "transparent"); // 선택지를 초기화하자!
+					elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
 					currentPosition = 1;
 					processSumbit(true);
 				}
@@ -547,8 +548,8 @@ var game3 = function(){
 			if(color!=answer) // 지금 찍은게 틀렸으면
 			{
 				controlLevel();	// 레벨을 조절합니다!
-				elem.color_area.children("div:lt(3)").css("background-color", "transparent"); // 문제지를 초기화하자!
-				elem.color_area.children("div:gt(4)").css("background-color", "transparent"); // 선택지를 초기화하자!
+				//elem.color_area.children("div:lt(4)").css("background-color", "transparent"); // 문제지를 초기화하자!
+				elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
 				console.log("틀렸어!");
 				processSumbit(false);
 				currentPosition = 1;	// 선택지 위치를 다시 1번으로 돌리고
