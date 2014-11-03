@@ -4,10 +4,12 @@ var stats = function(){
 	var _this = $('#page_stats');
 
 	var elem = {
-		gmae1_tale : _this.find('.game1 table'),
-		gmae2_tale : _this.find('.game2 table'),
+		game1_table : _this.find('.game1 table'),
+		game2_table : _this.find('.game2 table'),
+		game3_table : _this.find('.game3 table'),
 		game1_mystats : _this.find('.game1 ul'),
-		game2_mystats : _this.find('.game2 ul')
+		game2_mystats : _this.find('.game2 ul'),
+		game3_mystats : _this.find('.game3 ul')
 	}
 
 	var requestTop5 = function(gameType, callback){
@@ -63,9 +65,10 @@ var stats = function(){
 
 		init : function(callback){	//레디고 출력
 
-			elem.gmae1_tale.find('tbody').empty();
-			elem.gmae2_tale.find('tbody').empty();
-
+			elem.game1_table.find('tbody').empty();
+			elem.game2_table.find('tbody').empty();
+			elem.game3_table.find('tbody').empty();
+			
 			requestTop5('1', function(res){
 				var result = JSON.parse(res);
 				console.log('result : '+result);
@@ -80,7 +83,7 @@ var stats = function(){
 							"<td>"+item.PLAY_TIME+"</td>"+
 						"</tr>";
 
-					elem.gmae1_tale.find('tbody').append(itemElem);
+					elem.game1_table.find('tbody').append(itemElem);
 				});
 			});			
 
@@ -96,7 +99,23 @@ var stats = function(){
 							"<td>"+item.PLAY_TIME+"</td>"+
 						"</tr>";
 
-					elem.gmae2_tale.find('tbody').append(itemElem);
+					elem.game2_table.find('tbody').append(itemElem);
+				});
+			});
+			
+			requestTop5('3', function(res){
+				var result = JSON.parse(res);
+				console.log('result : '+result);
+				$.each(result, function(idx, item){
+					var itemElem = 
+						"<tr>"+
+							"<td>"+(idx+1)+"</td>"+
+							"<td>"+item.ID+"</td>"+
+							"<td>"+item.SCORE+"</td>"+
+							"<td>"+item.PLAY_TIME+"</td>"+
+						"</tr>";
+
+					elem.game3_table.find('tbody').append(itemElem);
 				});
 			});
 
@@ -115,6 +134,14 @@ var stats = function(){
 				elem.game2_mystats.find('.play-cnt > span').text(result.play_cnt);
 				elem.game2_mystats.find('.max-combo > span').text(result.max_combo);
 				elem.game2_mystats.find('.max-score > span').text(result.max_score);
+			});
+			
+			requestMystats('3', function(res){
+				var result = JSON.parse(res)[0];
+				console.log('result : '+JSON.stringify(result));
+				elem.game3_mystats.find('.play-cnt > span').text(result.play_cnt);
+				elem.game3_mystats.find('.max-combo > span').text(result.max_combo);
+				elem.game3_mystats.find('.max-score > span').text(result.max_score);
 			});
 
 		}
