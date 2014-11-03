@@ -566,102 +566,203 @@ var game4 = function(){
 	var _this = $('#game_g4');
 
 	var elem = {
-		picture : 	_this.find('.picture'),
-		option : 	_this.find('.option'),
-		num1 :  	_this.find('.num1'),
-		num2 :  	_this.find('.num2'),
-		num3 :  	_this.find('.num3'),
-		num4 :  	_this.find('.num4'),
+		picture_area : 	_this.find('.game4_picture_area'),
+		pic1 : 	_this.find('.game4_picture_1'),
+		pic2 : 	_this.find('.game4_picture_2'),
+		pic3 : 	_this.find('.game4_picture_3'),
+		pic4 : 	_this.find('.game4_picture_4'),
+		pic5 : 	_this.find('.game4_picture_5'),
+		pic6 : 	_this.find('.game4_picture_6'),
+		pic7 : 	_this.find('.game4_picture_7'),
+		pic8 : 	_this.find('.game4_picture_8'),
+		pic9 : 	_this.find('.game4_picture_9'),
+		pic10 : 	_this.find('.game4_picture_10'),
+		pic11 : 	_this.find('.game4_picture_11'),
+		pic12 : 	_this.find('.game4_picture_12'),
+		pic13 : 	_this.find('.game4_picture_13'),
+		pic14 : 	_this.find('.game4_picture_14'),
+		pic15 : 	_this.find('.game4_picture_15'),
+		pic16 : 	_this.find('.game4_picture_16'),
+		pic17 : 	_this.find('.game4_picture_17'),
+		pic18 : 	_this.find('.game4_picture_18'),
+		pic19 : 	_this.find('.game4_picture_19'),
+		pic20 : 	_this.find('.game4_picture_20'),
+		pic21 : 	_this.find('.game4_picture_21'),
+		pic22 : 	_this.find('.game4_picture_22'),
+		pic23 : 	_this.find('.game4_picture_23'),
+		pic24 : 	_this.find('.game4_picture_24'),
+		pic25 : 	_this.find('.game4_picture_25'),
 		title : 	$('#game_title')
 	};
 
-	var currentQNum = {
-		left : 0,
-		right : 0
+	var currentLevel = 1;	// 현재 레벨 입니다.
+	
+	var minimum = 0;	// 최소 범위 입니다.
+	var maximum = 0;	// 최대 범위 입니다.
+	
+	//var currentPosition = 1; // 색을 골랐을 때 색이 들어가야할 곳의 위치입니다.
+	
+	var getRandomNumberByRange = function(min, max) {	// 범위로 랜덤 변수를 반환합니다.
+			return Math.floor( (Math.random() * (max - min + 1)) + min );
 	};
-
-	var getRanNum = function(size){
-		var length = 1;
-		while(size)
+	
+	var getRandomNumberByRangeNorepeat = function(min,max){	// 반복없이 범위로 랜덤 배열을 반환합니다.
+	    var A= [];
+	    while(max>= min) A.push(max--)    
+	    A.sort(function(){return .5- Math.random()});  
+	    return A;
+	}
+	
+	var controlLevel = function(){	// 레벨을 조정합니다!
+		if(game.getScore() <= 2000){
+			currentLevel = 1;
+		}else if(game.getScore() <= 5000){
+			currentLevel = 2;
+		}else if(game.getScore() <= 8000){
+			currentLevel = 3;
+		}else if(game.getScore() <= 12000){
+			currentLevel = 4;
+		}else if(game.getScore() <= 15000){
+			currentLevel = 5;
+		}
+	};
+	
+	/*
+	var setColor = function(){
+		if(currentPosition<5)
 		{
-			length = length * 10;
-			size--;
-			if(size == 0)
-			{
-				break;
-			}
-		}		
-		return Math.floor(Math.random()*length);
-	};
-
+			console.log("객체지향 성공.");
+		}
+			
+	};*/
+	
 	//정답 제출 핸들러
-	elem.option.find('> div').click(function(){
-		var largeT = $(this).attr('largeT');
-		game1.submit(largeT);
+	elem.picture_area.find("td").click(function(){
+		console.log(this);
+		var color = $(this).css("background-color");
+		$(this).css("background-color", "yellow");
+		game4.submit(color);	
 	});
-
+	/*
 	//제출함수 로 부터 UI 처리
 	var	processSumbit = function(bool){
 		if(bool){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_o.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(true);
-			game1.playSet();
+			game4.playSet();
 
 		}
 		else if(!bool){
 			$("#result_message").html("<img src='assets/img/game/img_feedback_x.png'></img>").show();
 			$("#result_message").fadeOut(500);
 			game.solve(false);
-			game1.playSet();
+			game4.playSet();
 		}
-	};
+	};*/
 	
 	return{
 		init : function(){
 			_this.show();
-			elem.title.text('숫자대소비교');
-			game1.playSet();
-			game.setType(1);
+			maxLevel = 1;
+			elem.title.text('색깔 순서 맞추기');
+			//elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
+			game4.playSet();
+			game.setType(4);
 		},
 		playSet : function(){
-			elem.question.hide();
+			var randomPicture = getRandomNumberByRangeNorepeat(1, 115);	// 랜덤으로 그림 115개 순서를 섞습니다.
+			switch(currentLevel)
+			{
+				case 1:	// 레벨 1인 경우
+					break;
 
-			currentQNum.left = getRanNum(2);
-			currentQNum.right = getRanNum(2); 
-
-			elem.leftNum.text(currentQNum.left);
-			elem.rightNum.text(currentQNum.right);
-			elem.question.fadeIn(350);
-		},
-		submit : function(largeT){
-
-			switch (largeT){
-				case 'left' :
-					if(currentQNum.left > currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-				break;
-				case 'right' :
-					if(currentQNum.left < currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-
-				break;
-				case 'equal' :
-
-					if(currentQNum.left == currentQNum.right){
-						processSumbit(true);
-					}else{
-						processSumbit(false);
-					}
-
-				break;
+				case 2:	// 레벨 2인 경우
+					break;
+				
+				case 3:	// 레벨 3인 경우
+					break;
+				
+				case 4:	// 레벨 4인 경우
+					break;
+				
+				case 5:	// 레벨 5인 경우
+					break;
+				
+				default:
 			}
+			// 먼저 하나만 놓을 자리를 랜덤으로 정합니다.
+			var solo_image_position = getRandomNumberByRange(11, 15);
+			// 11번방 부터 15번 방까지 랜덤 순서로 만듭니다.
+			var random_room = getRandomNumberByRangeNorepeat(11, 15);
+			// 역 리스트를 만듭니다.
+			var random_number = Array(16);					
+			// 방 5개를 순회하면서 방 번호를 체크 합니다.
+			var smallest_number = 11;
+			for(var num=0; num<5; num++)
+			{
+				console.log("방 순회"+num);
+				for(var num2=0; num2<5; num2++)
+				{
+					console.log("다음 방 순회"+num2);
+					if(random_room[num2] == smallest_number)	// 제일 낮은 수인지 확인하고
+					{
+						console.log("제일 낮은 수 찾음"+smallest_number);
+						random_number[smallest_number] = num2;	// 랜덤 변수가 들어간 방의 번호가 저장됩니다. [랜덤변수]=방번호
+						smallest_number ++;
+						break;
+					}
+					
+				}
+				
+			}
+			for(var num=11; num<16; num++)
+			{
+				// 11번이 들어있는 방에는 제일 첫번째 랜덤 그림을 넣습니다.
+				if(num==11)
+				{
+					$(".game4_picture_" + (random_number[num]+11)).css({"background": "url(./assets/game4/" + randomPicture[0] + ".png)", "background-size": "cover"});
+				}
+				else	// 다른 방에는 같은 그림을 두번씩 집어넣습니다.
+				{
+					// X번 방에는 X번 랜덤 그림을 넣는다.
+					$(".game4_picture_" + (random_number[num]+11)).css({"background": "url(./assets/game4/" + randomPicture[Math.floor(num/2)*2] + ".png)", "background-size": "cover"});
+				}
+			}
+		},
+		submit : function(color){
+			console.log("답을 골랐습니다..");
+			//alert(getRandomNumberByRangeNorepeat(1, 5));
+			/*
+			var answer =  $(".color_" + currentPosition).css("background-color");
+			if(color==answer) // 지금 찍은게 맞았으면 
+			{
+				console.log("맞았어!");
+				if(currentPosition == maxLevel) // 마지막 선택지 였을 경우
+				{
+					controlLevel();	// 레벨을 조절합니다!
+					console.log("다 맞았어!");
+					elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
+					currentPosition = 1;
+					processSumbit(true);
+				}
+				else	// 마지막 선택지가 아니었으면!
+				{
+					// 다음 선택지를 골라줍니다.
+					currentPosition = currentPosition + 1;
+				}
+			}
+			if(color!=answer) // 지금 찍은게 틀렸으면
+			{
+				controlLevel();	// 레벨을 조절합니다!
+				//elem.color_area.children("div:lt(4)").css("background-color", "transparent"); // 문제지를 초기화하자!
+				elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
+				console.log("틀렸어!");
+				processSumbit(false);
+				currentPosition = 1;	// 선택지 위치를 다시 1번으로 돌리고
+			}
+			
+			console.log(currentPosition);*/
 		}
 	};
 }();

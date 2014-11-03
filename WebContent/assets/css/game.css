@@ -411,3 +411,78 @@
 	background-color: #000000;
 }
 
+#game_g4 .game4_picture_area{
+	position : absolute;
+	left: 50%;
+	top: 65%;
+	margin-left: -250px;
+	margin-top: -250px;
+	width: 450px;
+	height: 450px;
+}
+
+#game_g4{
+	
+}
+
+#game_g4 .game4_table{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: red;
+}
+
+#game_g4 .full_picture{
+	background-size: cover;
+}
+
+#game_g4 .game4_picture_1{
+}
+#game_g4 .game4_picture_2{
+}
+#game_g4 .game4_picture_3{
+}
+#game_g4 .game4_picture_4{
+}
+#game_g4 .game4_picture_5{
+}
+#game_g4 .game4_picture_6{
+}
+#game_g4 .game4_picture_7{
+}
+#game_g4 .game4_picture_8{
+}
+#game_g4 .game4_picture_9{
+}
+#game_g4 .game4_picture_10{
+}
+#game_g4 .game4_picture_11{
+}
+#game_g4 .game4_picture_12{
+}
+#game_g4 .game4_picture_13{
+}
+#game_g4 .game4_picture_14{
+}
+#game_g4 .game4_picture_15{
+}
+#game_g4 .game4_picture_16{
+}
+#game_g4 .game4_picture_17{
+}
+#game_g4 .game4_picture_18{
+}
+#game_g4 .game4_picture_19{
+}
+#game_g4 .game4_picture_20{
+}
+#game_g4 .game4_picture_21{
+}
+#game_g4 .game4_picture_22{
+}
+#game_g4 .game4_picture_23{
+}
+#game_g4 .game4_picture_24{
+}
+#game_g4 .game4_picture_25{
+}
