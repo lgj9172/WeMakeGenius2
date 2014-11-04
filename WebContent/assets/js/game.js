@@ -140,7 +140,6 @@ var game = function(){
 			elem.timer.text(10);
 			$(".game-info-header").hide();
 			$(".play-ground").hide();
-			$(".main_audio").trigger('pause');	
 			$.each(setTimerArray, function(idx, item){
 				item.clearTimeout();
 			});
