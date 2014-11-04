@@ -665,7 +665,8 @@ var game4 = function(){
 	return{
 		init : function(){
 			_this.show();
-			elem.title.text('색깔 순서 맞추기');
+			elem.title.text('짝 없는 그림 찾기');
+			$(".game4_table").find("td").css("background", "transparent");
 			currentLevel = 1;
 			game4.playSet();
 			game.setType(4);
@@ -675,7 +676,7 @@ var game4 = function(){
 			switch(currentLevel)
 			{
 				case 1:	// 레벨 1인 경우
-					minimum = 11;
+					minimum = 11;	// minimum과 maximum은 홀수여야 합니다.
 					maximum = 15;
 					break;
 
@@ -690,13 +691,13 @@ var game4 = function(){
 					break;
 				
 				case 4:	// 레벨 4인 경우
-					minimum = 4;
-					maximum = 22;
+					minimum = 5;
+					maximum = 21;
 					break;
 				
 				case 5:	// 레벨 5인 경우
-					minimum = 1;
-					maximum = 25;
+					minimum = 3;
+					maximum = 23;
 					break;
 				
 				default:
@@ -733,6 +734,7 @@ var game4 = function(){
 				{
 					answer_number = random_number[num]+minimum;
 					$(".game4_picture_" + (random_number[num]+minimum)).css({"background": "url(./assets/game4/" + randomPicture[0] + ".png)", "background-size": "cover"});
+					$(".game4_picture_" + (random_number[num]+minimum)).css("background-color", "yellow");
 				}
 				else	// 다른 방에는 같은 그림을 두번씩 집어넣습니다.
 				{
