@@ -666,7 +666,7 @@ var game4 = function(){
 		init : function(){
 			_this.show();
 			elem.title.text('색깔 순서 맞추기');
-			//elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
+			currentLevel = 1;
 			game4.playSet();
 			game.setType(4);
 		},
