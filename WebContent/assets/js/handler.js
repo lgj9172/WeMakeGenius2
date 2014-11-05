@@ -6,7 +6,7 @@
 $(function GnbHandler() {
 	$('.page').hide();
 	$('#page_home').show();
-	audio_event = document.getElementById("main_audio");
+
 	//GNB 핸들러
 	$('.page-locater').click(function(e){
 
@@ -15,8 +15,8 @@ $(function GnbHandler() {
 
 		if(targetRef=='play'){
 			if(window.sessionStorage.length != 0){
-				main_audio = $('#main_audio').attr("src", "assets/sound/game.mp3")[0];
-				main_audio = $('#main_audio').attr("loop",true)[0];
+				$('#main_audio').attr("src", "assets/sound/game.mp3")[0];
+				
 			}
 			else{
 				alert('로그인을 먼저 해야 합니다.');
@@ -25,8 +25,8 @@ $(function GnbHandler() {
 		}else if(targetRef=='stats'){
 			if(window.sessionStorage.length != 0){
 				stats.init();
-				main_audio = $('#main_audio').attr("src", "assets/sound/result.mp3")[0];
-				main_audio = $('#main_audio').attr("loop",true)[0];
+				$('#main_audio').attr("src", "assets/sound/result.mp3")[0];
+				
 			}else{
 				alert('로그인을 먼저 해야 합니다.');
 				return false;
@@ -34,7 +34,7 @@ $(function GnbHandler() {
 		}else if(targetRef=='home'){
 			if(window.sessionStorage.length != 0){
 				main_audio = $('#main_audio').attr("src", "assets/sound/BT_main.mp3")[0];
-				main_audio = $('#main_audio').attr("loop",true)[0];
+				
 			}else{
 				alert('로그인을 먼저 해야 합니다.');
 				return false;
@@ -43,6 +43,7 @@ $(function GnbHandler() {
 
 		$('.page').hide();
 		$('#page_'+targetRef).show();
+		
 
 		$('.page-locater').parent('li').removeClass('active');
 		$(this).parent('li').addClass('active');
