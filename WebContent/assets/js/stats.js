@@ -7,9 +7,11 @@ var stats = function(){
 		game1_table : _this.find('.game1 table'),
 		game2_table : _this.find('.game2 table'),
 		game3_table : _this.find('.game3 table'),
+		game4_table : _this.find('.game4 table'),
 		game1_mystats : _this.find('.game1 ul'),
 		game2_mystats : _this.find('.game2 ul'),
-		game3_mystats : _this.find('.game3 ul')
+		game3_mystats : _this.find('.game3 ul'),
+		game4_mystats : _this.find('.game4 ul')
 	}
 
 	var requestTop5 = function(gameType, callback){
@@ -68,6 +70,7 @@ var stats = function(){
 			elem.game1_table.find('tbody').empty();
 			elem.game2_table.find('tbody').empty();
 			elem.game3_table.find('tbody').empty();
+			elem.game4_table.find('tbody').empty();
 			
 			requestTop5('1', function(res){
 				var result = JSON.parse(res);
@@ -118,6 +121,22 @@ var stats = function(){
 					elem.game3_table.find('tbody').append(itemElem);
 				});
 			});
+			
+			requestTop5('4', function(res){
+				var result = JSON.parse(res);
+				console.log('result : '+result);
+				$.each(result, function(idx, item){
+					var itemElem = 
+						"<tr>"+
+							"<td>"+(idx+1)+"</td>"+
+							"<td>"+item.ID+"</td>"+
+							"<td>"+item.SCORE+"</td>"+
+							"<td>"+item.PLAY_TIME+"</td>"+
+						"</tr>";
+
+					elem.game4_table.find('tbody').append(itemElem);
+				});
+			});
 
 			requestMystats('1', function(res){
 				var result = JSON.parse(res)[0];
@@ -137,6 +156,14 @@ var stats = function(){
 			});
 			
 			requestMystats('3', function(res){
+				var result = JSON.parse(res)[0];
+				console.log('result : '+JSON.stringify(result));
+				elem.game3_mystats.find('.play-cnt > span').text(result.play_cnt);
+				elem.game3_mystats.find('.max-combo > span').text(result.max_combo);
+				elem.game3_mystats.find('.max-score > span').text(result.max_score);
+			});
+			
+			requestMystats('4', function(res){
 				var result = JSON.parse(res)[0];
 				console.log('result : '+JSON.stringify(result));
 				elem.game3_mystats.find('.play-cnt > span').text(result.play_cnt);

@@ -125,10 +125,10 @@
 			con.close();
 		}catch (ClassNotFoundException e){
 			//e.printStackTrace();
-			out.println(e);
+			//out.println(e);
 		}catch (SQLException e){
 			//e.printStackTrace();
-			out.println(e);
+			//out.println(e);
 		}finally{
 			out.println(jsona);	
 		}
