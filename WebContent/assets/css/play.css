@@ -9,9 +9,14 @@
 
 #game_list_ctr > ul{
     position: absolute;
-    top: 20%;
+    top: 25%;
     text-align: center;
-    width: 1920px;
+    width: 1600px;
+    margin-bottom: 0px;
+    margin: 0 auto;
+    padding: 0;
+    left: 0px;
+    right: 0px;
 }
 
 #game_list_ctr > ul > li{
