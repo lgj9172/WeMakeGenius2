@@ -3,11 +3,16 @@
 }
 
 #page_stats .stats-ctn{
-    top: 17%;
+    top: 10%;
  
     
     position: relative;
     padding: 27px;
+}
+
+#page_stats .stats-ctn > div{
+    margin-top: 50px;
+    
 }
 
 #page_stats .stats-ctn > .container{
@@ -21,13 +26,14 @@
 }
 
 #page_stats h1{
-    display: inline-block;
-    position: absolute;
     font-size: 28px;
 }
 
 .stats-info ul {
+    display: inline-block;
 
+    float: right;
+    width: 303px;
 }
 
 .stats-info ul li{
@@ -37,9 +43,23 @@
 
 .stats-ctn h2{
     font-size: 20px;
-	
+    
+    display: block;
 }
 
 .stats-info h2{
-	font-size: 20px;
+    font-size: 20px;
+    display: inline-block;
+    float: left;
+}
+
+.bottom-container h1{
+    display: inline-block;
+
+    float: left;
+}
+
+.mystats > div{
+    margin: 15px 0;
+    
 }
