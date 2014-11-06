@@ -218,16 +218,6 @@ var game1 = function(){
 			elem.title.text('숫자대소비교');
 			game1.playSet();
 			game.setType(1);
-		},
-		playSet : function(){
-			elem.question.hide();
-
-			currentQNum.left = getRanNum(2);
-			currentQNum.right = getRanNum(2); 
-
-			elem.leftNum.text(currentQNum.left);
-			elem.rightNum.text(currentQNum.right);
-			elem.question.fadeIn(350);
 
 			//키보드 핸들링
 			$(window).on('keyup', function(e){
@@ -243,7 +233,16 @@ var game1 = function(){
 						break;
 				}
 			})
-			
+		},
+		playSet : function(){
+			elem.question.hide();
+
+			currentQNum.left = getRanNum(2);
+			currentQNum.right = getRanNum(2); 
+
+			elem.leftNum.text(currentQNum.left);
+			elem.rightNum.text(currentQNum.right);
+			elem.question.fadeIn(350);
 		},
 		submit : function(largeT){
 
@@ -403,22 +402,6 @@ var game2 = function(){
 			elem.title.text('사진숫자퀴즈');
 			game2.playSet();
 			game.setType(2);
-		},
-		playSet : function(){
-			elem.picture.hide();
-			elem.option.find('> div').hide();
-
-			upgradeLevel();
-
-			currentPicMeta = getRanPicMeta(level);
-			var exampleArray = getExample(currentPicMeta.ANSWER);
-
-			$.each(exampleArray, function(idx, item){
-				elem.option.find('> div').eq(idx).text(item).fadeIn(200);
-			})
-
-			elem.picture.css('background-image', 'url(assets/game/'+level+'/'+currentPicMeta.URL+')');
-			elem.picture.fadeIn(350);
 
 			//키보드 핸들링
 			$(window).on('keyup', function(e){
@@ -437,6 +420,22 @@ var game2 = function(){
 						break;
 				}
 			})
+		},
+		playSet : function(){
+			elem.picture.hide();
+			elem.option.find('> div').hide();
+
+			upgradeLevel();
+
+			currentPicMeta = getRanPicMeta(level);
+			var exampleArray = getExample(currentPicMeta.ANSWER);
+
+			$.each(exampleArray, function(idx, item){
+				elem.option.find('> div').eq(idx).text(item).fadeIn(200);
+			})
+
+			elem.picture.css('background-image', 'url(assets/game/'+level+'/'+currentPicMeta.URL+')');
+			elem.picture.fadeIn(350);
 		},
 		submit : function(submitVal){
 			if(submitVal == currentPicMeta.ANSWER){
@@ -549,6 +548,43 @@ var game3 = function(){
 			elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
 			game3.playSet();
 			game.setType(3);
+
+			$(window).on('keyup', function(e){
+				switch(e.keyCode){
+					case 81 :
+						console.log(0);
+						elem.option_area.children("div").eq(0).trigger('click');
+						break;
+					case 87 :
+					console.log(1);
+						elem.option_area.children("div").eq(1).trigger('click');
+						break;
+					case 69 :
+					console.log(2);
+						elem.option_area.children("div").eq(2).trigger('click');
+						break;
+					case 82 :
+					console.log(3);
+						elem.option_area.children("div").eq(3).trigger('click');
+						break;
+					case 65 :
+					console.log(4);
+						elem.option_area.children("div").eq(4).trigger('click');
+						break;
+					case 83 :
+					console.log(5);
+						elem.option_area.children("div").eq(5).trigger('click');
+						break;
+					case 68 :
+					console.log(6);
+						elem.option_area.children("div").eq(6).trigger('click');
+						break;
+					case 70 :
+					console.log(7);
+						elem.option_area.children("div").eq(7).trigger('click');
+						break;	
+				}
+			});
 		},
 		playSet : function(){
 			var randomColor=0;
