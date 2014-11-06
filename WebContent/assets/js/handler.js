@@ -9,7 +9,7 @@ $(function GnbHandler() {
 
 	//GNB 핸들러
 	$('.page-locater').click(function(e){
-
+		$(window).off('keyup');
 		e.stopImmediatePropagation();
 		var targetRef = $(this).attr('ref');
 

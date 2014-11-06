@@ -228,6 +228,22 @@ var game1 = function(){
 			elem.leftNum.text(currentQNum.left);
 			elem.rightNum.text(currentQNum.right);
 			elem.question.fadeIn(350);
+
+			//키보드 핸들링
+			$(window).on('keyup', function(e){
+				switch(e.keyCode){
+					case 37 :
+						elem.option.find('> div').eq(0).trigger('click');
+						break;
+					case 40 :
+						elem.option.find('> div').eq(1).trigger('click');
+						break;
+					case 39 :
+						elem.option.find('> div').eq(2).trigger('click');
+						break;
+				}
+			})
+			
 		},
 		submit : function(largeT){
 
@@ -403,6 +419,24 @@ var game2 = function(){
 
 			elem.picture.css('background-image', 'url(assets/game/'+level+'/'+currentPicMeta.URL+')');
 			elem.picture.fadeIn(350);
+
+			//키보드 핸들링
+			$(window).on('keyup', function(e){
+				switch(e.keyCode){
+					case 38 :
+						elem.option.find('> div').eq(0).trigger('click');
+						break;
+					case 39 :
+						elem.option.find('> div').eq(1).trigger('click');
+						break;
+					case 40 :
+						elem.option.find('> div').eq(2).trigger('click');
+						break;
+					case 37 :
+						elem.option.find('> div').eq(3).trigger('click');
+						break;
+				}
+			})
 		},
 		submit : function(submitVal){
 			if(submitVal == currentPicMeta.ANSWER){
