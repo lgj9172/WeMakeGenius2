@@ -20,7 +20,7 @@ var game = function(){
 	var point = 0;
 	var combo = 0;
 
-	var limitSec = 60;
+	var limitSec = 4;
 	
 	var sycPoint = function(){
 		elem.score.html(point+' Point'+'&nbsp;&nbsp;<span> '+combo+' Combo</span>');
@@ -32,6 +32,7 @@ var game = function(){
 	$('#finish_message .home').click(function(){
 		$('.page-locater[ref="play"]').trigger('click');
 		$(".main_audio").trigger('pause');
+		$('#rank-scroll').show();
 	});
 
 	return {
@@ -141,7 +142,7 @@ var game = function(){
 			$(".game-info-header").hide();
 			$(".play-ground").hide();
 			$.each(setTimerArray, function(idx, item){
-				item.clearTimeout();
+				clearTimeout(item);
 			});
 		},
 		getScore : function(){
