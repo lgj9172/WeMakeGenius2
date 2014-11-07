@@ -166,9 +166,9 @@ var stats = function(){
 			requestMystats('4', function(res){
 				var result = JSON.parse(res)[0];
 				console.log('result : '+JSON.stringify(result));
-				elem.game3_mystats.find('.play-cnt > span').text(result.play_cnt);
-				elem.game3_mystats.find('.max-combo > span').text(result.max_combo);
-				elem.game3_mystats.find('.max-score > span').text(result.max_score);
+				elem.game4_mystats.find('.play-cnt > span').text(result.play_cnt);
+				elem.game4_mystats.find('.max-combo > span').text(result.max_combo);
+				elem.game4_mystats.find('.max-score > span').text(result.max_score);
 			});
 
 		}
