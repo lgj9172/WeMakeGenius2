@@ -683,15 +683,15 @@ var game4 = function(){
 	}
 	
 	var controlLevel = function(){	// 레벨을 조정합니다!
-		if(game.getScore() <= 2000){
+		if(game.getScore() <= 4000){
 			currentLevel = 1;
-		}else if(game.getScore() <= 5000){
+		}else if(game.getScore() <= 10000){
 			currentLevel = 2;
-		}else if(game.getScore() <= 8000){
-			currentLevel = 3;
-		}else if(game.getScore() <= 12000){
-			currentLevel = 4;
 		}else if(game.getScore() <= 15000){
+			currentLevel = 3;
+		}else if(game.getScore() <= 21000){
+			currentLevel = 4;
+		}else if(game.getScore() <= 28000){
 			currentLevel = 5;
 		}
 	};
