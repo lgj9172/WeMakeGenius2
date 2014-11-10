@@ -87,6 +87,7 @@ var game = function(){
 					setTimeout(function(){
 						$(".game-info-header").hide();
 						$(".play-ground").hide();
+						$("#game_title").hide();
 
 		        		$("#finish_message").show();
 		        		$("#finish_message").find('.point').text(point+' Point');
@@ -216,6 +217,7 @@ var game1 = function(){
 	return{
 		init : function(){
 			_this.show();
+			$("#game_title").show();
 			elem.title.text('숫자대소비교');
 			game1.playSet();
 			game.setType(1);
@@ -400,6 +402,7 @@ var game2 = function(){
 	return{
 		init : function(){
 			_this.show();
+			$("#game_title").show();
 			elem.title.text('사진숫자퀴즈');
 			game2.playSet();
 			game.setType(2);
@@ -544,6 +547,7 @@ var game3 = function(){
 	return{
 		init : function(){
 			_this.show();
+			$("#game_title").show();
 			maxLevel = 1;
 			elem.title.text('색깔 순서 맞추기');
 			elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
@@ -736,6 +740,7 @@ var game4 = function(){
 	return{
 		init : function(){
 			_this.show();
+			$("#game_title").show();
 			elem.title.text('짝 없는 그림 찾기');
 			$(".game4_table").find("td").css("background", "transparent");
 			currentLevel = 1;
