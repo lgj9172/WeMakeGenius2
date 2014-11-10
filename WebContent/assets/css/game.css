@@ -119,7 +119,7 @@
 
 }
 
-/*숫자대소비교 게임 스타일*/
+/*�닽�옄���냼鍮꾧탳 寃뚯엫 �뒪���씪*/
 #game_g1{
     width: 100%;
     height: 100%;
@@ -268,7 +268,7 @@
     background: url(../img/game/light_red.png);
 }
 
-/* 색깔 순서 맞추기 게임 스타일 */
+/* �깋源� �닚�꽌 留욎텛湲� 寃뚯엫 �뒪���씪 */
 #game_g3{
 	
 }
@@ -354,7 +354,9 @@
 	width: 700px;
 	height: 250px;
 	margin-left: -350px;
-	
+	color: white;
+	font-size: 50px;
+	line-height: 100px;
 }
 
 #game_g3 .color_option_1{
