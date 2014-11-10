@@ -810,7 +810,7 @@ var game4 = function(){
 				{
 					answer_number = random_number[num]+minimum;
 					$(".game4_picture_" + (random_number[num]+minimum)).css({"background": "url(./assets/game4/" + randomPicture[0] + ".png)", "background-size": "cover"});
-					$(".game4_picture_" + (random_number[num]+minimum)).css("background-color", "yellow");
+					//$(".game4_picture_" + (random_number[num]+minimum)).css("background-color", "yellow"); 정답표시기
 				}
 				else	// 다른 방에는 같은 그림을 두번씩 집어넣습니다.
 				{
@@ -830,37 +830,6 @@ var game4 = function(){
 
 				processSumbit(false);
 			}
-			//alert(getRandomNumberByRangeNorepeat(1, 5));
-			/*
-			var answer =  $(".color_" + currentPosition).css("background-color");
-			if(color==answer) // 지금 찍은게 맞았으면 
-			{
-				console.log("맞았어!");
-				if(currentPosition == maxLevel) // 마지막 선택지 였을 경우
-				{
-					controlLevel();	// 레벨을 조절합니다!
-					console.log("다 맞았어!");
-					elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
-					currentPosition = 1;
-					processSumbit(true);
-				}
-				else	// 마지막 선택지가 아니었으면!
-				{
-					// 다음 선택지를 골라줍니다.
-					currentPosition = currentPosition + 1;
-				}
-			}
-			if(color!=answer) // 지금 찍은게 틀렸으면
-			{
-				controlLevel();	// 레벨을 조절합니다!
-				//elem.color_area.children("div:lt(4)").css("background-color", "transparent"); // 문제지를 초기화하자!
-				elem.color_area.children("div").css("background-color", "transparent"); // 선택지와 문제를 초기화하자!
-				console.log("틀렸어!");
-				processSumbit(false);
-				currentPosition = 1;	// 선택지 위치를 다시 1번으로 돌리고
-			}
-			
-			console.log(currentPosition);*/
 		}
 	};
 }();
