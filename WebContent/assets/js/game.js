@@ -382,13 +382,13 @@ var game2 = function(){
 	};
 
 	var upgradeLevel = function(){
-		if(game.getScore() == 4000){
+		if(game.getScore() <= 4000){
 			level = 1;
-		}else if(game.getScore() == 7000){
+		}else if(game.getScore() <= 7000){
 			level = 2;
-		}else if(game.getScore() == 12000){
+		}else if(game.getScore() <= 12000){
 			level = 3;
-		}else if(game.getScore() == 16000){
+		}else if(game.getScore() <= 16000){
 			level = 4;
 		}
 	};
