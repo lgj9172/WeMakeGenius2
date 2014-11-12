@@ -748,6 +748,7 @@ var game4 = function(){
 			game.setType(4);
 		},
 		playSet : function(){
+			$(".game4_table").find("td").css("background", "transparent");	// 레벨이 조정되었을 때를 대비하여 화면에 있는 사진을 모두 없앱니다.
 			var randomPicture = getRandomNumberByRangeNorepeat(1, 115);	// 랜덤으로 그림 115개 순서를 섞습니다.
 			switch(currentLevel)
 			{
